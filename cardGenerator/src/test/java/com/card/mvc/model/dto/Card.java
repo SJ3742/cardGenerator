@@ -13,6 +13,7 @@ public class Card {
 	private String ability;
 	private Skill skill1;
 	private Skill skill2;
+	private String desc;
 	
 	Card(){};
 	
@@ -59,6 +60,15 @@ public class Card {
 		this.skill2 = skill2;
 	}
 	
+	
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 	//JSON 변환
     public String toJson() {
         ObjectMapper objectMapper = new ObjectMapper();
