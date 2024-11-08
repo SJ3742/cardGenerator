@@ -13,6 +13,7 @@ public class Card {
 	private String ability;
 	private Skill skill1;
 	private Skill skill2;
+	private String desc;
 	
 	Card(){};
 	
