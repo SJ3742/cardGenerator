@@ -1,6 +1,5 @@
 package com.card.mvc.model.dto;
 
-import java.io.File;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
