@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Skill {
 	private List<Type> cost; //비용(마나)
 	private String name; //스킬 이름
-	private int dmg; // 데미지
+	private int damage; // 데미지
 	private String desc; //설명
 
 	public List<Type> getCost() {
@@ -19,12 +19,40 @@ public class Skill {
 		this.cost = cost;
 	}
 
-	public int getDmg() {
-		return dmg;
+	public int getDamage() {
+		return damage;
 	}
 
-	public void setDmg(int dmg) {
-		this.dmg = dmg;
+	public void setDamage(int dmg) {
+		this.damage = dmg;
+	}	
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the desc
+	 */
+	public String getDesc() {
+		return desc;
+	}
+
+	/**
+	 * @param desc the desc to set
+	 */
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
 	// JSON 변환

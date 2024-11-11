@@ -31,7 +31,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // 홈 경로로 이동할 때 경고 창 띄우기
   if (to.path === '/' && from.path ==='/form') {
-    const confirmed = confirm('정말로 홈으로 이동하시겠습니까?');
+    const confirmed = confirm('입력을 중지하고 홈으로 이동하실건가요?');
     if (confirmed) {
       next(); // 사용자가 확인을 누르면 이동
     } else {
