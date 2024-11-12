@@ -217,8 +217,28 @@ function removeCost(type, skill) {
 }
 
 function handleSubmit() {
-  console.log('Form Submitted:', { name, url, ability, selectedType, skill1, skill2, desc });
+  console.log('Form Submitted:', { 
+    name: name.value, 
+    url: url.value, 
+    ability: ability.value, 
+    selectedType: selectedType.value, 
+    rarity: rarity.value,
+    skill1: {
+      name: skill1.value.name,
+      damage: skill1.value.damage,
+      desc: skill1.value.desc,
+      cost: [...skill1.value.cost]
+    },
+    skill2: {
+      name: skill2.value.name,
+      damage: skill2.value.damage,
+      desc: skill2.value.desc,
+      cost: [...skill1.value.cost]
+    },
+    desc: desc.value 
+  });
 }
+
 </script>
 
 <style scoped>

@@ -1,20 +1,13 @@
 <script setup>
-import {useRouter} from 'vue-router'
-const router = useRouter(); 
-const goTo = (routeName) => {
-  router.push({ name: routeName });
-};
+import TheHeaderNav from './components/common/TheHeaderNav.vue';
+
+
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <img class="icon" src="@/assets/icon.png" @click="goTo('home')" />
-        <RouterLink :to="{name:'form'}">form</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <TheHeaderNav/>
+
+
 
   <RouterView />
 </template>
