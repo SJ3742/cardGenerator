@@ -139,6 +139,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import api from '@/Axios/connect'
 
 const nameInputType = ref('auto');
 const name = ref('');
@@ -147,6 +148,7 @@ const ability = ref('');
 const selectedType = ref('');
 const rarity = ref(''); // 희귀도 선택 변수
 const desc = ref('');
+const resultImg = ref('');
 const skill1 = ref({ name: '', damage: '', desc: '', cost: [] });
 const skill2 = ref({ name: '', damage: '', desc: '', cost: [] });
 
@@ -201,6 +203,7 @@ function toggleSkillCost(type, skill) {
   // 최대 4개의 아이콘만 추가 가능하도록 조건 설정
   if (skillCost.length < 4) {
     skillCost.push(type);
+    skillCost.sort((a, b) => a.id - b.id);
   }
 }
 
@@ -217,7 +220,8 @@ function removeCost(type, skill) {
 }
 
 function handleSubmit() {
-  console.log('Form Submitted:', { 
+  // 폼 데이터 준비
+  const formData = { 
     name: name.value, 
     url: url.value, 
     ability: ability.value, 
@@ -227,16 +231,27 @@ function handleSubmit() {
       name: skill1.value.name,
       damage: skill1.value.damage,
       desc: skill1.value.desc,
-      cost: [...skill1.value.cost]
+      cost: [...skill1.value.cost] // 프록시 배열을 일반 배열로 전개
     },
     skill2: {
       name: skill2.value.name,
       damage: skill2.value.damage,
       desc: skill2.value.desc,
-      cost: [...skill1.value.cost]
+      cost: [...skill2.value.cost] // 프록시 배열을 일반 배열로 전개
     },
     desc: desc.value 
-  });
+  };
+
+  // Axios로 서버에 POST 요청
+  api.post('server-url', formData) //아직 안적어놨음 나중에 적어야함!!!!!
+    .then(response => {
+      console.log('서버 응답:', response.data);
+      // 응답 처리 로직 추가 (예: 성공 메시지 표시)
+    })
+    .catch(error => {
+      console.error('요청 실패:', error);
+      // 오류 처리 로직 추가 (예: 에러 메시지 표시)
+    });
 }
 
 </script>
