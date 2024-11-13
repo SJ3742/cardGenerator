@@ -139,7 +139,8 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import api from '@/Axios/connect'
+import api from '@/Axios/connect';
+import router from '@/router';
 
 const nameInputType = ref('auto');
 const name = ref('');
@@ -245,13 +246,18 @@ function handleSubmit() {
   // Axios로 서버에 POST 요청
   api.post('server-url', formData) //아직 안적어놨음 나중에 적어야함!!!!!
     .then(response => {
+      //응답 처리 로직 추가 (console에 로그 출력하고 result에 보내기)
       console.log('서버 응답:', response.data);
-      // 응답 처리 로직 추가 (예: 성공 메시지 표시)
+      router.goTo('result');
+      
     })
     .catch(error => {
       console.error('요청 실패:', error);
       // 오류 처리 로직 추가 (예: 에러 메시지 표시)
     });
+  
+    
+
 }
 
 </script>
