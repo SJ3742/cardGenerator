@@ -8,7 +8,7 @@ public class Card {
 	private String sId; //스트리머 고유 아이디(플랫폼 정보 2자리+아이디로 구성)
 	private String imgURL; //이미지
 	private Rarity rarity; //희귀도(enum)
-	private Type type; //타입
+	private Type type; //타입(enum)
 	private String ability;
 	private Skill skill1;
 	private Skill skill2;

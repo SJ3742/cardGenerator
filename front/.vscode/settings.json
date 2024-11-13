@@ -1,0 +1,6 @@
+{
+    "javascript.validate.enable": false,
+    "typescript.preferences.renameMatchingJsxTags": false,
+    "typescript.suggestionActions.enabled": false,
+    "typescript.surveys.enabled": false
+}

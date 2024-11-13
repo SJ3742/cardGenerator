@@ -226,23 +226,23 @@ function handleSubmit() {
     name: name.value, 
     url: url.value, 
     ability: ability.value, 
-    selectedType: selectedType.value, 
+    type: selectedType.value.id, 
     rarity: rarity.value,
     skill1: {
       name: skill1.value.name,
       damage: skill1.value.damage,
       desc: skill1.value.desc,
-      cost: [...skill1.value.cost] // 프록시 배열을 일반 배열로 전개
+      cost: skill1.value.cost.map(item => item.id) // 프록시 배열을 일반 배열로 전개
     },
     skill2: {
       name: skill2.value.name,
       damage: skill2.value.damage,
       desc: skill2.value.desc,
-      cost: [...skill2.value.cost] // 프록시 배열을 일반 배열로 전개
+      cost: skill1.value.cost.map(item => item.id) // 프록시 배열을 일반 배열로 전개
     },
     desc: desc.value 
   };
-
+  console.log(formData);
   // Axios로 서버에 POST 요청
   api.post('server-url', formData) //아직 안적어놨음 나중에 적어야함!!!!!
     .then(response => {
