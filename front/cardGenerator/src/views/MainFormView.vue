@@ -222,7 +222,7 @@ function removeCost(type, skill) {
 
 function handleSubmit() {
   // 폼 데이터 준비
-  const formData = { 
+  const card = { 
     name: name.value, 
     url: url.value, 
     ability: ability.value, 
@@ -242,13 +242,13 @@ function handleSubmit() {
     },
     desc: desc.value 
   };
-  console.log(formData);
+  console.log(card);
   // Axios로 서버에 POST 요청
-  api.post('server-url', formData) //아직 안적어놨음 나중에 적어야함!!!!!
+  api.post('http://localhost:8080/generate-card', card) //아직 안적어놨음 나중에 적어야함!!!!!
     .then(response => {
       //응답 처리 로직 추가 (console에 로그 출력하고 result에 보내기)
       console.log('서버 응답:', response.data);
-      router.goTo('result');
+      router.push('result');
       
     })
     .catch(error => {

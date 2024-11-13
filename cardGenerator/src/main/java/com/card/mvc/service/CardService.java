@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import com.card.mvc.model.dto.Card;
 
 @Service
-public class cardService {
+public class CardService {
 	//카드 이미지 생성
-	public static Card createCard(Card card) {
+	public Card createCard(Card card) {
 		
 		return null;
 	}

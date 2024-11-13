@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://your-server-endpoint', // 서버 기본 URL
+  baseURL: 'http://localhost:8080/', // 서버 기본 URL
   headers: {
     'Content-Type': 'application/json',
   },
