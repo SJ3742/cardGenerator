@@ -1,5 +1,6 @@
 package com.card.mvc.controller;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.card.mvc.model.dto.Card;
 import com.card.mvc.service.CardService;
 
-@RestController  // JSON 반환을 위해 @RestController 사용
-@RequestMapping("/")
+@RestController
+@RequestMapping("/card")
 public class CardController {
 
     private final CardService service;
@@ -20,20 +21,21 @@ public class CardController {
         this.service = service;
     }
 
-    // 받아온 데이터로 카드 생성
-    @PostMapping("/generate-card")
-    public ResponseEntity<Card> generateCard(@RequestBody Card card) {
-    	System.out.println("생성 요청");
+    @PostMapping
+    public ResponseEntity<byte[]> generateCard(@RequestBody Card card) {
         try {
-            // 카드 생성 로직
-            Card newCard = service.createCard(card); // this.service로 변경
+            byte[] newCard = service.createCard(card);
             if (newCard != null) {
-                return ResponseEntity.status(HttpStatus.CREATED).body(newCard);
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Content-Type", "image/png");
+                headers.add("Content-Disposition", "inline; filename=card.png");
+                return new ResponseEntity<>(newCard, headers, HttpStatus.CREATED);
             }
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         } catch (Exception e) {
-            // 실패 시 INTERNAL_SERVER_ERROR 반환
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }
+

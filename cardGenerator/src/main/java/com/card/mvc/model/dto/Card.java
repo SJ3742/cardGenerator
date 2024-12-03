@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Card {
 	private String sId; //스트리머 고유 아이디(플랫폼 정보 2자리+아이디로 구성)
+	private String name;
 	private String imgURL; //이미지
 	private Rarity rarity; //희귀도(enum)
 	private Type type; //타입(enum)
@@ -22,6 +23,15 @@ public class Card {
 	public void setsId(String sId) {
 		this.sId = sId;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getImgURL() {
 		return imgURL;
 	}
