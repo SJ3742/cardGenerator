@@ -21,6 +21,10 @@ public class CardController {
         this.service = service;
     }
 
+    /**
+     * @param card
+     * @return
+     */
     @PostMapping
     public ResponseEntity<byte[]> generateCard(@RequestBody Card card) {
         try {
@@ -28,7 +32,8 @@ public class CardController {
             if (newCard != null) {
                 HttpHeaders headers = new HttpHeaders();
                 headers.add("Content-Type", "image/png");
-                headers.add("Content-Disposition", "inline; filename=card.png");
+                // 카드 이름에 맞춰 파일명 지정
+                headers.add("Content-Disposition", "inline; filename=" + card.getName() + "_card.png");
                 return new ResponseEntity<>(newCard, headers, HttpStatus.CREATED);
             }
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);

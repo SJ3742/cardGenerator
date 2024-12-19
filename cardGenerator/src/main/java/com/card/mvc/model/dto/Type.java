@@ -10,7 +10,8 @@ public enum Type {
     DARK(7, "#4c4948"),
     STEEL(8, "#69a9c7"),
     DRAGON(9, "#535ca8"),
-    NORMAL(10, "#949495");
+    NORMAL(10, "#949495"),
+	TRAINER(11, "#FFFFFF");
 
     private final int id;
     private final String colorCode;
